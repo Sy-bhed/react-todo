@@ -12,13 +12,8 @@ class ListItem extends Component{
         this.props.onFinishChange(obj);
     };
 
-    handleDelete = () => {
-        const { item } = this.props;
-        this.props.onDeleteChange(item);
-    };
-
     render(){
-        const item = this.props.item;
+        const { item, onDeleteChange } = this.props;
 
         return(
             <li key={item.id}>
@@ -30,7 +25,7 @@ class ListItem extends Component{
                     />
                 </span>
                 <span>{item.name}</span>
-                <span onClick={this.handleDelete}>删除</span>
+                <span onClick={() => onDeleteChange(item)}>删除</span>
             </li>
         );
     }
